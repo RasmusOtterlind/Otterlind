@@ -63,3 +63,4 @@ crashlytics-build.properties
 Sammarbetsspel/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 Sammarbetsspel/ProjectSettings/TimelineSettings.asset
 
+.vscode/settings.json
