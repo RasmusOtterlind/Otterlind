@@ -8,8 +8,12 @@ public class Move : MonoBehaviour
     private PhotonView photonView;
     private float forwardBackward;
     private float sideStep;
-    [SerializeField]private float speed = 5.0f;
-    private Rigidbody rigidbody;
+    [SerializeField] private float speed = 5.0f;
+    private Rigidbody rigidBody;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private Transform groundChecker;
+
+    private bool firstJump = false;
     // Start is called before the first frame update
     private bool debug = true;
 
@@ -23,7 +27,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        rigidbody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
 
     }
 
@@ -38,7 +42,18 @@ public class Move : MonoBehaviour
             
             if (Input.GetButtonDown("Jump"))
             {
-                rigidbody.AddForce(transform.up*1000);
+                if(Physics.CheckSphere(groundChecker.position, 0.2f, groundMask, QueryTriggerInteraction.Ignore))
+                {
+              
+                    rigidBody.AddForce(transform.up * 600);
+                    firstJump = true;
+                }
+                else if (firstJump)
+                {
+                    rigidBody.AddForce(transform.up * 600);
+                    firstJump = false;
+                }
+
 
             }
 
