@@ -9,10 +9,22 @@ public class Move : MonoBehaviour
     private float forwardBackward;
     private float sideStep;
     [SerializeField]private float speed = 5.0f;
+    private Rigidbody rigidbody;
     // Start is called before the first frame update
+    private bool debug = true;
+
+    private void DebugPrint(string debugString)
+    {
+        if (debug){
+            Debug.Log(debugString);
+        }
+    }
+
     void Start()
     {
         photonView = GetComponent<PhotonView>();
+        rigidbody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -21,7 +33,14 @@ public class Move : MonoBehaviour
         if (photonView.IsMine)
         {
             forwardBackward = Input.GetAxisRaw("Vertical");
+
             sideStep = Input.GetAxisRaw("Horizontal");
+            
+            if (Input.GetButtonDown("Jump"))
+            {
+                rigidbody.AddForce(transform.up*1000);
+
+            }
 
             transform.Translate((forwardBackward * transform.forward + sideStep * transform.right ) * Time.deltaTime * speed);
         }
