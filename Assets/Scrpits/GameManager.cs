@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient){
             timeSinceStart += Time.deltaTime;
-            coinHandler();
             timeSinceCoin += Time.deltaTime;
 
             DebugPrint("Time for server: " + timeSinceStart);
