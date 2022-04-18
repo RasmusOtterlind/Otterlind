@@ -2,14 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField createInput;
     [SerializeField] private TMP_InputField joinInput;
+    [SerializeField] private TMP_Text rooms;
     private bool debug = true;
 
+    private void Start()
+    {
+        Debug.Log(PhotonNetwork.CurrentLobby.Name);
+    }
 
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        Debug.Log("######UPDATELIST#####");
+        rooms.text = "Rooms:\n";
+        for (int i = 0; roomList.ToArray().Length > i; i++)
+        {
+            RoomInfo room = roomList.ToArray()[i];
+            rooms.text += room.Name + "\n";
+        }
+       
+    }
     private void DebugPrint(string debugString)
     {
         if (debug){
