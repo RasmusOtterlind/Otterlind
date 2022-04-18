@@ -41,18 +41,19 @@ public class MovePowerUp : MonoBehaviour
             DebugPrint("Collision with player");
             
 
-            GetComponent<PhotonView>().RPC("FixPowerUp", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
+            GetComponent<PhotonView>().RPC("FixPowerUp", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID, Random.Range(-1f, 1f), Random.Range(0, 1f), Random.Range(-1f, 1f));
         }
     }
 
     [PunRPC]
-    private void FixPowerUp(int photonViewId)
+    private void FixPowerUp(int photonViewId, float x, float y , float z)
     {
+        position = new Vector3(x, y, z); 
         GameObject colliderObject = PhotonView.Find(photonViewId).gameObject;
         //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
         this.transform.SetParent(colliderObject.transform);
         //position = new Vector3(Random.Range(-1,1), Random.Range(0,1), Random.Range(-1,1)).normalized*3;
-        position = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 1f), Random.Range(-1f, 1f)).normalized * 3;
+        position = position.normalized * 3;
         DebugPrint("Vector is: " + position);
         this.transform.localPosition = position;
         rigidBody.useGravity = false;
