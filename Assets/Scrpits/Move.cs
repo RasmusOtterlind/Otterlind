@@ -54,10 +54,9 @@ public class Move : MonoBehaviour
                     firstJump = false;
                 }
 
-
             }
-
-            transform.Translate((forwardBackward * transform.forward + sideStep * transform.right ) * Time.deltaTime * speed);
+            transform.Rotate(0, sideStep * 80 * Time.deltaTime, 0, relativeTo: Space.World);
+            rigidBody.velocity = transform.forward * speed * forwardBackward + new Vector3(0, rigidBody.velocity.y, 0);
         }
         else
         { //Vi äger ej denna view
