@@ -32,8 +32,12 @@ public class MovePowerUp : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player" && GetComponent<PhotonView>().IsMine){
-            Debug.Log("Collision with player");
-            PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+            DebugPrint("Collision with player");
+            //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+            this.transform.SetParent(collision.gameObject.transform);
+            this.transform.localPosition = new Vector3(5,0,5);
+            rigidBody.useGravity = false;
+
         }
     }
 }
