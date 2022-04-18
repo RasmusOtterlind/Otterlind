@@ -39,16 +39,24 @@ public class MovePowerUp : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && GetComponent<PhotonView>().IsMine){
             DebugPrint("Collision with player");
-            //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
-            this.transform.SetParent(collision.gameObject.transform);
-            //position = new Vector3(Random.Range(-1,1), Random.Range(0,1), Random.Range(-1,1)).normalized*3;
-            position = new Vector3(Random.Range(-1f,1f), 0, Random.Range(-1f,1f)).normalized*3;
-            DebugPrint("Vector is: " + position);
-            this.transform.localPosition = position;
-            rigidBody.useGravity = false;
-            update = true;
+            
 
+            GetComponent<PhotonView>().RPC("FixPowerUp", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
         }
+    }
+
+    [PunRPC]
+    private void FixPowerUp(int photonViewId)
+    {
+        GameObject colliderObject = PhotonView.Find(photonViewId).gameObject;
+        //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+        this.transform.SetParent(colliderObject.transform);
+        //position = new Vector3(Random.Range(-1,1), Random.Range(0,1), Random.Range(-1,1)).normalized*3;
+        position = new Vector3(Random.Range(-1f, 1f), Random.Range(0, 1f), Random.Range(-1f, 1f)).normalized * 3;
+        DebugPrint("Vector is: " + position);
+        this.transform.localPosition = position;
+        rigidBody.useGravity = false;
+        update = true;
     }
 }
 
