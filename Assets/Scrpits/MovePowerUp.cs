@@ -9,6 +9,9 @@ public class MovePowerUp : MonoBehaviour
 
     private Vector3 position;
 
+    private GameObject pivotObject;
+    [SerializeField]private float rotationSpeed = 15f;
+
     private bool update = false;
     [SerializeField] private bool debug = false;
 
@@ -32,6 +35,7 @@ public class MovePowerUp : MonoBehaviour
     {
         if (update){
             //this.transform.localPosition = position;
+            transform.RotateAround(pivotObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -50,6 +54,7 @@ public class MovePowerUp : MonoBehaviour
     {
         position = new Vector3(x, y, z); 
         GameObject colliderObject = PhotonView.Find(photonViewId).gameObject;
+        pivotObject = colliderObject;
        
         this.transform.SetParent(colliderObject.transform);
         
