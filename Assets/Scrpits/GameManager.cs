@@ -34,9 +34,11 @@ public class GameManager : MonoBehaviour
         if (PhotonNetwork.IsMasterClient){
             timeSinceStart += Time.deltaTime;
             timeSinceCoin += Time.deltaTime;
+            DebugPrint("Time Since Coin: " + timeSinceCoin);
 
-            if (timeSinceCoin  > 1000){
-                Vector3 coinVector = new Vector3(Random.Range(0,100), 0, 0);
+            if (timeSinceCoin  > 10){
+                //Vector3 coinVector = new Vector3(Random.Range(0,10), 0, 0);
+                Vector3 coinVector = new Vector3(10, 0, 0);
                 GameObject coin = PhotonNetwork.Instantiate(coinPrefab.name, coinVector, Quaternion.identity);
                 DebugPrint("Spawned a coin");
                 timeSinceCoin = 0;
