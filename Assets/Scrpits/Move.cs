@@ -72,16 +72,20 @@ public class Move : MonoBehaviour
             }
 
         }
-        transform.Rotate(0, sideStep * 80 * Time.deltaTime, 0, relativeTo: Space.World);
-        rigidBody.velocity = transform.forward * speed * forwardBackward + new Vector3(0, rigidBody.velocity.y, 0);
+        rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep).normalized * speed + new Vector3(0, rigidBody.velocity.y, 0);
     }
 
     private void HandleRotation()
     {
         float mouseX = Input.GetAxis("Mouse X") * 5;
-        float mouseY = Input.GetAxis("Mouse Y") * 5;
-        transform.Rotate(mouseY * 50 * Time.deltaTime, 0, 0, relativeTo: Space.World);
-        transform.Rotate(0, mouseX * 50 * Time.deltaTime, 0, relativeTo: Space.World);
+        float mouseY = Input.GetAxis("Mouse Y") * -5;
+        float cameraOffset = 20; 
+        //Camera.main.transform.Rotate(mouseY * 50 * Time.deltaTime, 0, 0, relativeTo: Space.Self);
+        if(Camera.main.transform.localPosition.z + mouseY * 50 * Time.deltaTime < 0) {
+            Camera.main.transform.localPosition = (Camera.main.transform.localPosition + new Vector3(0, mouseY * 50 * Time.deltaTime, mouseY * 50 * Time.deltaTime)).normalized * 25;
+        }
+        Camera.main.transform.LookAt(transform);
+        transform.Rotate(0, mouseX * 90 * Time.deltaTime, 0, relativeTo: Space.World);
 
     }
 }
