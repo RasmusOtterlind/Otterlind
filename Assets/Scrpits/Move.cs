@@ -46,7 +46,7 @@ public class Move : MonoBehaviour
             
         }
         else
-        { //Vi äger ej denna view
+        { //We do not own this player
             return;
         }
     }
@@ -72,7 +72,12 @@ public class Move : MonoBehaviour
             }
 
         }
-        rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep).normalized * speed + new Vector3(0, rigidBody.velocity.y, 0);
+        if (Input.GetKey(KeyCode.LeftShift)){
+            rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep).normalized * speed * 4 + new Vector3(0, rigidBody.velocity.y, 0);
+        }
+        else {
+            rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep).normalized * speed + new Vector3(0, rigidBody.velocity.y, 0);
+        }
     }
 
     private void HandleRotation()

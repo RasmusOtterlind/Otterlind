@@ -6,6 +6,10 @@ using Photon.Pun;
 public class MovePowerUp : MonoBehaviour
 {
     private Rigidbody rigidBody;
+
+    private Vector3 position;
+
+    private bool update = false;
     [SerializeField] private bool debug = false;
 
 
@@ -26,7 +30,9 @@ public class MovePowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        return;
+        if (update){
+            this.transform.localPosition = position;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -35,8 +41,12 @@ public class MovePowerUp : MonoBehaviour
             DebugPrint("Collision with player");
             //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
             this.transform.SetParent(collision.gameObject.transform);
-            this.transform.localPosition = new Vector3(5,0,5);
+            //position = new Vector3(Random.Range(-1,1), Random.Range(0,1), Random.Range(-1,1)).normalized*3;
+            position = new Vector3(Random.Range(-1f,1f), 0, Random.Range(-1f,1f)).normalized*3;
+            DebugPrint("Vector is: " + position);
+            this.transform.localPosition = position;
             rigidBody.useGravity = false;
+            update = true;
 
         }
     }
