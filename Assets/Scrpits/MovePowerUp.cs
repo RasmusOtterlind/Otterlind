@@ -6,8 +6,8 @@ using Photon.Pun;
 public class MovePowerUp : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    private bool debug = true;
-    public GameObject coinPrefab;
+    [SerializeField] private bool debug = false;
+
 
     private void DebugPrint(string debugString)
     {
@@ -18,6 +18,7 @@ public class MovePowerUp : MonoBehaviour
 
     void Start()
     {
+        DebugPrint("Hello we added coin booooi");
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.AddForce(transform.up * 600);
     }
@@ -26,6 +27,14 @@ public class MovePowerUp : MonoBehaviour
     void Update()
     {
         return;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player"){
+            Debug.Log("Collision with player");
+            PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+        }
     }
 }
 

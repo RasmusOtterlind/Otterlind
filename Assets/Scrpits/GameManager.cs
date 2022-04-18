@@ -6,11 +6,11 @@ using Photon.Pun;
 public class GameManager : MonoBehaviour
 {
 
-    private bool debug = true;
+    [SerializeField] private bool debug = false;
     private float timeSinceStart = 0f;
 
     private float timeSinceCoin = 0f;
-    private float cooldownCoin = 0f;
+    [SerializeField]private float cooldownCoin = 10f;
     private int amountOfCoins = 0;
     public GameObject coinPrefab;
     private void DebugPrint(string debugString)
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             timeSinceCoin += Time.deltaTime;
             DebugPrint("Time Since Coin: " + timeSinceCoin);
 
-            if (timeSinceCoin  > 1){
+            if (timeSinceCoin  > cooldownCoin){
                 Vector3 coinVector = new Vector3(Random.Range(-45,45), Random.Range(-5,15), Random.Range(-45,45));
                 GameObject coin = PhotonNetwork.Instantiate(coinPrefab.name, coinVector, Quaternion.identity);
                 DebugPrint("Spawned a coin");

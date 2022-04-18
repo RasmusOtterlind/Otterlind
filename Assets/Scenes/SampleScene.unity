@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4482a89f3ec6ca42b28e3e57b498b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   coinPrefab: {fileID: 6949127570202917554, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
 --- !u!4 &1579572458
 Transform:
@@ -459,10 +460,6 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3446688275907411982, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
-      propertyPath: ObservedComponents.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6949127570202917554, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
       propertyPath: m_Name
       value: coin
@@ -513,24 +510,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
---- !u!1 &3920526969844596837 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6949127570202917554, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
-  m_PrefabInstance: {fileID: 3920526969844596836}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3920526969844596838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920526969844596837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2fd736c3631fb499859d3715a314b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 6949127570202917554, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
 --- !u!1001 &4621680301861179439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -613,4 +592,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2fd736c3631fb499859d3715a314b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   coinPrefab: {fileID: 5809794525619496356, guid: 4f599b009862d4f46b245d134f1f584b, type: 3}
