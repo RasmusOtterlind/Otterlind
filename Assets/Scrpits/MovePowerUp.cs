@@ -31,7 +31,7 @@ public class MovePowerUp : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player" && GetComponent<PhotonView>().IsMine){
             Debug.Log("Collision with player");
             PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
         }
