@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface PowerUpInterface
+abstract class PowerUpInterface
 {
-    void spawnPowerUp();
+    private int amountOnMap;
+    private float timeSinceSpawn;
+    private int maxAmountPlayer;
+
 }

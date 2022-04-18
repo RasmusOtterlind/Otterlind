@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private float timeSinceCoin = 0f;
     private float cooldownCoin = 0f;
     private int amountOfCoins = 0;
-
+    public GameObject coinPrefab;
     private void DebugPrint(string debugString)
     {
         if (debug){
@@ -35,10 +35,11 @@ public class GameManager : MonoBehaviour
             timeSinceStart += Time.deltaTime;
             timeSinceCoin += Time.deltaTime;
 
-            DebugPrint("Time for server: " + timeSinceStart);
-            if ((timeSinceStart % 100) == 0){
-                DebugPrint("Time for server: " + timeSinceStart);
-
+            if (timeSinceCoin  > 1000){
+                Vector3 coinVector = new Vector3(Random.Range(0,100), 0, 0);
+                GameObject coin = PhotonNetwork.Instantiate(coinPrefab.name, coinVector, Quaternion.identity);
+                DebugPrint("Spawned a coin");
+                timeSinceCoin = 0;
             }
         }
     }
