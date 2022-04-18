@@ -31,7 +31,7 @@ public class MovePowerUp : MonoBehaviour
     void Update()
     {
         if (update){
-            this.transform.localPosition = position;
+            //this.transform.localPosition = position;
         }
     }
 
@@ -50,13 +50,16 @@ public class MovePowerUp : MonoBehaviour
     {
         position = new Vector3(x, y, z); 
         GameObject colliderObject = PhotonView.Find(photonViewId).gameObject;
-        //PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+       
         this.transform.SetParent(colliderObject.transform);
-        //position = new Vector3(Random.Range(-1,1), Random.Range(0,1), Random.Range(-1,1)).normalized*3;
+        
         position = position.normalized * 3;
         DebugPrint("Vector is: " + position);
         this.transform.localPosition = position;
+        transform.LookAt(transform.parent);
         rigidBody.useGravity = false;
+        rigidBody.isKinematic = true;
+        GetComponent<MeshCollider>().isTrigger = true;
         update = true;
     }
 }

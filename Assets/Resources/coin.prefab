@@ -170,4 +170,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  coinPrefab: {fileID: 6949127570202917554}
