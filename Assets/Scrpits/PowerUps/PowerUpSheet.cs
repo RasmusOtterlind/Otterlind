@@ -21,6 +21,7 @@ public class PowerUpSheet : MonoBehaviour
     public void AddPowerUp()
     {
         //Testing shit code
+        Debug.Log("Made it");
         powerUps.ToArray()[0].AddAdditionalPowerUp();
     }
 }

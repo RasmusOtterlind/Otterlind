@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2623878113341026866}
   - component: {fileID: 3446688275907411982}
   - component: {fileID: 3561060367577789515}
-  - component: {fileID: 3920526969844596838}
+  - component: {fileID: 1751378497159492929}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &3920526969844596838
+--- !u!114 &1751378497159492929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,8 +166,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6949127570202917554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2fd736c3631fb499859d3715a314b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 35f7836922ea02d4f8c1ceca423d638b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
-  debug: 1
