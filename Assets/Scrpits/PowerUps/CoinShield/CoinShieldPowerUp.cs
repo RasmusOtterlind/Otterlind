@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinShieldPickup : PowerUpPickup
+public class CoinShieldPowerUp : MonoBehaviour
 {
-    [SerializeField] private 
+    // Start is called before the first frame update
     void Start()
     {
         

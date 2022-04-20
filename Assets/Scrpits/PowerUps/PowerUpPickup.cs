@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 
-public class PowerUpPickup : MonoBehaviour
+public abstract class PowerUpPickup : MonoBehaviour
 {
     
     void Start()

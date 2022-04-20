@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUpSheet : MonoBehaviour
 {
+    [SerializeField] private List<PowerUp> powerUps;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class PowerUpSheet : MonoBehaviour
     //Should consider specifying powerups in some way here
     public void AddPowerUp()
     {
-
+        //Testing shit code
+        powerUps.ToArray()[0].AddAdditionalPowerUp();
     }
 }
