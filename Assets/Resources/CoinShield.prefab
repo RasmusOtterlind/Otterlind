@@ -12,12 +12,10 @@ GameObject:
   - component: {fileID: 6671037817385004973}
   - component: {fileID: 8894819018288847719}
   - component: {fileID: 2032611841844161375}
-  - component: {fileID: 2623878113341026866}
   - component: {fileID: 3446688275907411982}
   - component: {fileID: 3561060367577789515}
-  - component: {fileID: -8417186776723090767}
   m_Layer: 0
-  m_Name: coin
+  m_Name: CoinShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,22 +100,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: b5e670c7742c87149bfa03e93e783135, type: 3}
---- !u!54 &2623878113341026866
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6949127570202917554}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3446688275907411982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,15 +139,3 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &-8417186776723090767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6949127570202917554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ce7fe849524a14fbab8fafd8d26730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

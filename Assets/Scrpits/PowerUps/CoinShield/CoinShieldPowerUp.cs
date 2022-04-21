@@ -5,13 +5,20 @@ using Photon.Pun;
 public class CoinShieldPowerUp : PowerUp
 {
     [SerializeField] private GameObject coinShield;
-    [SerializeField] private Transform coinShieldTransform;
-    private static string key = "CoinShield";
 
+    //The transform that the coins spin around
+    [SerializeField] private Transform coinShieldTransform;
+    public static string key = "CoinShield";
+    private PhotonView photonView;
     public override void AddAdditionalPowerUp()
     {
-        
-        int viewID = PhotonNetwork.Instantiate(coinShield.name,Vector3.zero,Quaternion.identity).GetComponent<PhotonView>().ViewID;
+        if (photonView.IsMine)
+        {
+            int viewID = PhotonNetwork.Instantiate(coinShield.name, Vector3.zero, Quaternion.identity).GetComponent<PhotonView>().ViewID;
+            photonView.RPC(nameof(SetShieldParent), RpcTarget.AllBuffered, viewID);
+
+        }
+       
         
     }
 
@@ -19,21 +26,18 @@ public class CoinShieldPowerUp : PowerUp
     {
         return key;
     }
-
-    private void SetShieldParent()
+    [PunRPC]
+    private void SetShieldParent(int viewId)
     {
-
+        GameObject coinShield = PhotonView.Find(viewId).gameObject;
+        coinShield.transform.SetParent(coinShieldTransform);
+        coinShield.transform.localPosition = coinShieldTransform.forward * 3;
+        coinShield.transform.LookAt(coinShieldTransform);
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        photonView = GetComponent<PhotonView>();
     }
 }
