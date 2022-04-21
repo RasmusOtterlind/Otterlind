@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PowerUpSheet : MonoBehaviour
 {
-    [SerializeField] private List<PowerUp> powerUps;
+    private Dictionary<string,PowerUp> powerUps = new Dictionary<string, PowerUp>();
     // Start is called before the first frame update
     void Start()
     {
-        
+        PowerUp[] powerUpsInitArray = GetComponents<PowerUp>();
+        foreach(PowerUp powerup in powerUpsInitArray)
+        {
+            powerUps.Add(powerup.GetKey(), powerup);
+        }
     }
 
     // Update is called once per frame
@@ -18,10 +22,10 @@ public class PowerUpSheet : MonoBehaviour
     }
 
     //Should consider specifying powerups in some way here
-    public void AddPowerUp()
+    public void AddPowerUp(string powerUpKey)
     {
         //Testing shit code
         Debug.Log("Made it");
-        powerUps.ToArray()[0].AddAdditionalPowerUp();
+        powerUps[powerUpKey].AddAdditionalPowerUp();
     }
 }

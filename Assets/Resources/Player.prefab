@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5356053072636857464}
   - component: {fileID: 1361362492308990088}
+  - component: {fileID: 6965701804356092567}
+  - component: {fileID: 5364215513039803170}
   m_Layer: 6
   m_Name: CoinShield
   m_TagString: Untagged
@@ -45,6 +47,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 90
+--- !u!114 &6965701804356092567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627506094849475875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &5364215513039803170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627506094849475875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6965701804356092567}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4427334820492833604
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,8 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fbd6cd479899e439a810762dd9073b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUps:
-  - {fileID: 0}
 --- !u!114 &4792386832220866271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab82911d5279e5b449e0e4da52cec49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nUpgradesMax: 4
+  coinShield: {fileID: 6949127570202917554, guid: ddb48ccd4ad610643b99def5ce9a2f0f, type: 3}
 --- !u!1 &8799745201301284336
 GameObject:
   m_ObjectHideFlags: 0

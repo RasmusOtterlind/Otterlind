@@ -5,11 +5,26 @@ using Photon.Pun;
 public class CoinShieldPowerUp : PowerUp
 {
     [SerializeField] private GameObject coinShield;
+    [SerializeField] private Transform coinShieldTransform;
+    private static string key = "CoinShield";
+
     public override void AddAdditionalPowerUp()
     {
-        PhotonNetwork.Instantiate(coinShield.name,Vector3.zero,Quaternion.identity);
+        
+        int viewID = PhotonNetwork.Instantiate(coinShield.name,Vector3.zero,Quaternion.identity).GetComponent<PhotonView>().ViewID;
+        
     }
 
+    public override string GetKey()
+    {
+        return key;
+    }
+
+    private void SetShieldParent()
+    {
+
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
