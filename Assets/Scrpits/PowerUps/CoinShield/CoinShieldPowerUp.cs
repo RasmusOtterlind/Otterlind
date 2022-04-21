@@ -10,12 +10,15 @@ public class CoinShieldPowerUp : PowerUp
     [SerializeField] private Transform coinShieldTransform;
     public static string key = "CoinShield";
     private PhotonView photonView;
+    private int counter = 0;
     public override void AddAdditionalPowerUp()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && counter <= nUpgradesMax)
         {
+            
             int viewID = PhotonNetwork.Instantiate(coinShield.name, Vector3.zero, Quaternion.identity).GetComponent<PhotonView>().ViewID;
-            photonView.RPC(nameof(SetShieldParent), RpcTarget.AllBuffered, viewID);
+            photonView.RPC(nameof(SetShieldParent), RpcTarget.AllBuffered, viewID ,counter);
+            counter++;
 
         }
        
@@ -27,11 +30,28 @@ public class CoinShieldPowerUp : PowerUp
         return key;
     }
     [PunRPC]
-    private void SetShieldParent(int viewId)
+    private void SetShieldParent(int viewId, int newCount)
     {
+        counter = newCount;
         GameObject coinShield = PhotonView.Find(viewId).gameObject;
         coinShield.transform.SetParent(coinShieldTransform);
-        coinShield.transform.localPosition = coinShieldTransform.forward * 3;
+        if(counter == 0)
+        {
+            coinShield.transform.localPosition = Vector3.forward * 3;
+        }
+        else if (counter == 1)
+        {
+            coinShield.transform.localPosition = Vector3.forward * - 3;
+        }
+        else if (counter == 2)
+        {
+            coinShield.transform.localPosition = Vector3.right * 3;
+        }
+        else if (counter == 3)
+        {
+            coinShield.transform.localPosition = Vector3.right * -3;
+        }
+
         coinShield.transform.LookAt(coinShieldTransform);
     }
     

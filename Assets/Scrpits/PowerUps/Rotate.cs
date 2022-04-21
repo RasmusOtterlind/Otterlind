@@ -19,7 +19,7 @@ public class Rotate : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            transform.Rotate(transform.up, 90 * Time.deltaTime);
+            transform.Rotate(transform.up, rotationSpeed * Time.deltaTime);
         }
         
     }

@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab82911d5279e5b449e0e4da52cec49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nUpgradesMax: 4
+  nUpgradesMax: 3
   coinShield: {fileID: 6949127570202917554, guid: 50a4dc36bd909414685c5cdfe5e32048, type: 3}
   coinShieldTransform: {fileID: 5356053072636857464}
 --- !u!1 &8799745201301284336
