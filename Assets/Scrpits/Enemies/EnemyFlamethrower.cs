@@ -27,7 +27,7 @@ public class EnemyFlamethrower : MonoBehaviour
             timeSinceRecharge += Time.deltaTime;
             if (timeSinceRecharge > rechargeTime)
             {
-                Debug.Log("Borde stanna!!!!!!!!!!!!!!!!!!!!!");
+               
                 recharging = true;
                 timeSinceRecharge = 0;
                 particleSystem.emissionRate = 0;
@@ -39,7 +39,7 @@ public class EnemyFlamethrower : MonoBehaviour
             timeSinceRecharge += Time.deltaTime;
             if(timeSinceRecharge > rechargeTime)
             {
-                Debug.Log("STAAAAAAAAAAAAART");
+                
                 particleSystem.emissionRate = particlesPersecond;
                 timeSinceRecharge = 0;
                 recharging = false;
@@ -51,7 +51,7 @@ public class EnemyFlamethrower : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("ParticleCollision############");
+        
         if(other.gameObject.tag == "Player" && other.gameObject.GetComponent<PhotonView>().IsMine)
         {
             other.GetComponent<Destroyable>().Damage(damage);
