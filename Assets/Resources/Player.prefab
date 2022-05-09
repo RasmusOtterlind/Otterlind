@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 2914565746776790876}
   - component: {fileID: 7124885382636511318}
   - component: {fileID: 4792386832220866271}
+  - component: {fileID: -6704197688099892999}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -341,6 +342,19 @@ MonoBehaviour:
   nUpgradesMax: 3
   coinShield: {fileID: 6949127570202917554, guid: 50a4dc36bd909414685c5cdfe5e32048, type: 3}
   coinShieldTransform: {fileID: 5356053072636857464}
+--- !u!114 &-6704197688099892999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219377942888610555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adbaf86a82d17545b847f2d9b0ed6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 50
 --- !u!1 &8799745201301284336
 GameObject:
   m_ObjectHideFlags: 0
