@@ -8,10 +8,18 @@ public class CoinShieldPickup : PowerUpPickup
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && GetComponent<PhotonView>().IsMine)
+        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PowerUpSheet>().AddPowerUp(CoinShieldPowerUp.key);
-            PhotonNetwork.Destroy(gameObject);
+            if (collision.gameObject.GetComponent<PhotonView>().IsMine)
+            {
+                collision.gameObject.GetComponent<PowerUpSheet>().AddPowerUp(CoinShieldPowerUp.key);
+            }
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+            
+            
         }
     }
 }

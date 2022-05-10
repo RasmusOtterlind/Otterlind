@@ -44,6 +44,7 @@ public class Destroyable : MonoBehaviour
             }
         }
     }
+    [PunRPC]
     public void DamageWithUpdateThreshhold(float damage)
     {
         if (!photonView.IsMine)
@@ -51,7 +52,7 @@ public class Destroyable : MonoBehaviour
         damageThreshHold += damage;
     }
 
-    [PunRPC]
+   
     private void RPCDamage(float damage)
     {
         Damage(damage);
