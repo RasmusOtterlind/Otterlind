@@ -49,7 +49,7 @@ public class Destroyable : MonoBehaviour
     {
         if (!photonView.IsMine)
             return;
-        damageThreshHold += damage;
+        Damage(damage);
     }
 
    
