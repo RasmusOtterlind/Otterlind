@@ -14,14 +14,11 @@ public class DamageInRadius : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        
 
         if(other.CompareTag("Player") && other.GetComponent<PhotonView>().IsMine){
-            if(CompareTag("Enemy"))
+
             other.GetComponent<Destroyable>().Damage(damagePerSecond * Time.deltaTime);
-        }
-        else if (other.CompareTag("Enemy") && photonView.IsMine)
-        {
-            other.GetComponent<Destroyable>()?.Damage(damagePerSecond * Time.deltaTime);
         }
       
     }

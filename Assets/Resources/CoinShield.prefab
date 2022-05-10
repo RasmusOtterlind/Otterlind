@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2032611841844161375}
   - component: {fileID: 3446688275907411982}
   - component: {fileID: 3561060367577789515}
-  - component: {fileID: 3156798785560100996}
   m_Layer: 0
   m_Name: CoinShield
   m_TagString: Untagged
@@ -140,16 +139,3 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &3156798785560100996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6949127570202917554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f578f8932b729c941b704bfbf0613e48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerSecond: 20
