@@ -5,9 +5,10 @@ using Photon.Pun;
 [RequireComponent(typeof(PhotonView))]
 public class Destroyable : MonoBehaviour
 {
-    [SerializeField] float HealthPoints;
+    [SerializeField] float healthPoints;
     private PhotonView photonView;
-    private float damageThreshHold = 0;
+    private float damageThreshHold = 10f;
+    private float updateTreshold = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -23,20 +24,37 @@ public class Destroyable : MonoBehaviour
 
     public void Damage(float damage)
     {
-        HealthPoints -= damage;
-        if(HealthPoints < 0 && photonView.IsMine)
+        if (photonView.IsMine)
         {
-            if (gameObject.tag == "Player") Camera.main.transform.parent = null;
-            PhotonNetwork.Destroy(gameObject);
+            healthPoints -= damage;
+            if (healthPoints < 0)
+            {
+                if (gameObject.tag == "Player") Camera.main.transform.parent = null;
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
+        
+        else if (!photonView.IsMine)
+        {
+            updateTreshold += damage;
+            if(updateTreshold > damageThreshHold)
+            {
+                photonView.RPC(nameof(DamageWithUpdateThreshhold), RpcTarget.Others, damage);
+                updateTreshold = 0;
+            }
         }
     }
     public void DamageWithUpdateThreshhold(float damage)
     {
+        if (!photonView.IsMine)
+            return;
         damageThreshHold += damage;
-        if(damageThreshHold >= 5)
-        {
-            
-        }
+    }
+
+    [PunRPC]
+    private void RPCDamage(float damage)
+    {
+        Damage(damage);
     }
     
 
