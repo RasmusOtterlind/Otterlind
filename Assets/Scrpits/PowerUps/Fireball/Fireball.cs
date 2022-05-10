@@ -32,14 +32,18 @@ public class Fireball : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (photonView.IsMine)
         {
-            other.GetComponent<Destroyable>().Damage(damage);
-            PhotonNetwork.Destroy(gameObject);
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<Destroyable>().Damage(damage);
+                PhotonNetwork.Destroy(gameObject);
+            }
+            else
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
-        else
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
+        
     }
 }
