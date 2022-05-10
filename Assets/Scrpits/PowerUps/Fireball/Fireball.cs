@@ -10,8 +10,12 @@ public class Fireball : MonoBehaviour
     private PhotonView photonView;
     [SerializeField] private float timer = 10;
     private float timeSinceSpawned = 0f;
+    private bool destroy = false;
+    private float destroyTimer = 0;
+    private ParticleSystem particleSystem;
     private void Start()
     {
+        particleSystem = GetComponent<ParticleSystem>();
         photonView = GetComponent<PhotonView>();
     }
 
@@ -20,12 +24,23 @@ public class Fireball : MonoBehaviour
     {
         if (photonView.IsMine)
         {
+            if (destroy)
+            {
+                destroyTimer += Time.deltaTime;
+                if(destroyTimer > 2f)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+
+                }
+                return;
+            }
             transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
             timeSinceSpawned += Time.deltaTime;
             if(timeSinceSpawned > timer)
             {
-                PhotonNetwork.Destroy(gameObject);
+                destroy = true;
             }
+            
         }
     }
 
@@ -38,11 +53,24 @@ public class Fireball : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 other.GetComponent<Destroyable>().Damage(damage);
-                PhotonNetwork.Destroy(gameObject);
+                destroy = true;
+                transform.SetParent(other.transform);
+                particleSystem.emissionRate = 600;
+                
+            }
+            else if(other.CompareTag("Player"))
+            {
+                transform.SetParent(other.transform);
+                destroy = true;
+                particleSystem.emissionRate = 600;
+
             }
             else
             {
-                PhotonNetwork.Destroy(gameObject);
+                transform.SetParent(other.transform);
+                destroy = true;
+                particleSystem.emissionRate = 0;
+                
             }
         }
         
