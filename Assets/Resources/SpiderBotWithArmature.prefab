@@ -10570,7 +10570,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1211919019}
-  sceneViewId: 3
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1211919019
@@ -10618,7 +10618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adbaf86a82d17545b847f2d9b0ed6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 0
+  healthPoints: 200
 --- !u!135 &5401183418392490943
 SphereCollider:
   m_ObjectHideFlags: 0
