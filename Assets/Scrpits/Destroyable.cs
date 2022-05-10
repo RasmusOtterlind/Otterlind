@@ -39,7 +39,7 @@ public class Destroyable : MonoBehaviour
             updateTreshold += damage;
             if(updateTreshold > damageThreshHold)
             {
-                photonView.RPC(nameof(DamageWithUpdateThreshhold), RpcTarget.Others, damage);
+                photonView.RPC("DamageWithUpdateThreshhold", RpcTarget.Others, damage);
                 updateTreshold = 0;
             }
         }
