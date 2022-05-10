@@ -10445,6 +10445,7 @@ GameObject:
   - component: {fileID: 1211919020}
   - component: {fileID: 1211919019}
   - component: {fileID: 8941496126023848182}
+  - component: {fileID: 5401183418392490943}
   m_Layer: 0
   m_Name: SpiderBotWithArmature
   m_TagString: Enemy
@@ -10618,6 +10619,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 100
+--- !u!135 &5401183418392490943
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497541193393322939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.3
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1 &6684764472294037644
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,7 @@ public class Move : MonoBehaviour
     {
         
         movementDirection = new Vector3(sideStep, 0, forwardBackward);
+        movementDirection = movementDirection.normalized;
         movementDirection = Quaternion.AngleAxis(camera.transform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         
         
@@ -105,7 +106,8 @@ public class Move : MonoBehaviour
             }
             else
             {
-                rigidBody.velocity = movementDirection * speed + new Vector3(0, rigidBody.velocity.y, 0);
+                rigidBody.AddForce(movementDirection * 15);
+                //rigidBody.velocity = movementDirection * speed + new Vector3(0, rigidBody.velocity.y, 0);
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(movementDirection), 150 * Time.deltaTime);
             }
         }
