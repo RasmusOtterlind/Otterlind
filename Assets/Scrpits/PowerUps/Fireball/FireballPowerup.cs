@@ -9,8 +9,8 @@ public class FireballPowerup : PowerUp
     public static string key = "Fireball";
 
     [SerializeField] private Transform muzzle;
-    private int upgradeLevel = 1;
-    private float startTime = 2f;
+    private int upgradeLevel = 0;
+    private float startTime = 10f;
     private float shootTime;
     private float timer = 0f;
     private PhotonView photonView;

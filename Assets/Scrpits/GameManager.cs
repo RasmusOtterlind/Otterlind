@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private float timeSinceCoin = 0f;
     [SerializeField]private float cooldownCoin = 10f;
     private int amountOfCoins = 0;
-    public GameObject coinPrefab;
+    public GameObject[] powerUpPickupList;
     private void DebugPrint(string debugString)
     {
         if (debug){
@@ -37,11 +37,19 @@ public class GameManager : MonoBehaviour
             DebugPrint("Time Since Coin: " + timeSinceCoin);
 
             if (timeSinceCoin  > cooldownCoin){
-                Vector3 coinVector = new Vector3(Random.Range(-45,45), Random.Range(-5,15), Random.Range(-45,45));
-                GameObject coin = PhotonNetwork.Instantiate(coinPrefab.name, coinVector, Quaternion.identity);
+                
+                SpawnRandomPowerUp();
                 DebugPrint("Spawned a coin");
                 timeSinceCoin = 0;
             }
         }
+    }
+
+    private void SpawnRandomPowerUp()
+    {
+        int  index = Random.Range(0, powerUpPickupList.Length);
+        Vector3 coinVector = new Vector3(Random.Range(-45, 45), Random.Range(-5, 15), Random.Range(-45, 45));
+        PhotonNetwork.Instantiate(powerUpPickupList[index].name, coinVector, Quaternion.identity);
+
     }
 }
