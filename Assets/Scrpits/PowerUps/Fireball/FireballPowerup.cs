@@ -10,7 +10,7 @@ public class FireballPowerup : PowerUp
 
     [SerializeField] private Transform muzzle;
     private int upgradeLevel = 0;
-    private float startTime = 10f;
+    private float startTime = 8f;
     private float shootTime;
     private float timer = 0f;
     private PhotonView photonView;

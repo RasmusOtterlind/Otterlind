@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0b085722562b64db6c6802ad3fcb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nUpgradesMax: 10
+  nUpgradesMax: 40
   fireball: {fileID: 2341544672833561512, guid: ba2e077410c3e904b80145d9f60ed631, type: 3}
   muzzle: {fileID: 3226390663498584744}
 --- !u!1 &8799745201301284336
