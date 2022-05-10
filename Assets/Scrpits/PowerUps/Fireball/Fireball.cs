@@ -32,6 +32,7 @@ public class Fireball : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (!photonView) return;
         if (photonView.IsMine)
         {
             if (other.CompareTag("Enemy"))
