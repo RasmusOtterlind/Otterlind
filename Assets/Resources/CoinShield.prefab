@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2032611841844161375}
   - component: {fileID: 3446688275907411982}
   - component: {fileID: 3561060367577789515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CoinShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
