@@ -5,7 +5,7 @@ using Photon.Pun;
 [RequireComponent(typeof(PhotonView))]
 public class Destroyable : MonoBehaviour
 {
-    [SerializeField] float healthPoints;
+    [SerializeField] public float healthPoints;
     private PhotonView photonView;
     private float damageThreshHold = 10f;
     private float updateTreshold = 0f;
