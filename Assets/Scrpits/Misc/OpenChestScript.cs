@@ -21,7 +21,7 @@ public class OpenChestScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            transform.Rotate(transform.up, 15 * Time.deltaTime);
+            transform.Rotate(transform.forward, -15 * Time.deltaTime);
         }
     }
 }
