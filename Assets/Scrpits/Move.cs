@@ -14,6 +14,9 @@ public class Move : MonoBehaviour
     [SerializeField] private Transform groundChecker;
     private Camera camera;
     private Vector3 movementDirection;
+    private Vector3 animDirection;
+
+    private Animator animator;
 
     //camera
     private float xRotation = 0;
@@ -33,6 +36,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
         rigidBody = GetComponent<Rigidbody>();
         //Cursor.lockState = CursorLockMode.Locked;
@@ -70,7 +74,7 @@ public class Move : MonoBehaviour
                 }
 
             }
-
+            HandleMovement();
         }
 
     }
@@ -79,7 +83,8 @@ public class Move : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            HandleMovement();
+            //Should be moved to update and use transform.translate. So that we can apply knockback and while moving. This would also help fix the cinemachine camera
+            
             //HandleRotation();
 
         }
@@ -93,24 +98,30 @@ public class Move : MonoBehaviour
     {
         
         movementDirection = new Vector3(sideStep, 0, forwardBackward);
+        animDirection = new Vector3(sideStep, 0, forwardBackward);
+        animDirection = animDirection.normalized;
         movementDirection = movementDirection.normalized;
         movementDirection = Quaternion.AngleAxis(camera.transform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         
         
-        if (movementDirection.magnitude > 0.5f)
+        if (movementDirection.magnitude > 0.1f)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep) * speed * 1.25f + new Vector3(0, rigidBody.velocity.y, 0);
+                //rigidBody.velocity = (transform.forward * forwardBackward + transform.right * sideStep) * speed * 1.25f + new Vector3(0, rigidBody.velocity.y, 0);
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(movementDirection),150 * Time.deltaTime);
+                transform.Translate(movementDirection * speed * 1.5f * Time.deltaTime, Space.World);
             }
             else
             {
-                rigidBody.AddForce(movementDirection * 15);
+                //rigidBody.AddForce(movementDirection * 15);
+                transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
                 //rigidBody.velocity = movementDirection * speed + new Vector3(0, rigidBody.velocity.y, 0);
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(movementDirection), 150 * Time.deltaTime);
             }
         }
+        animator.SetFloat("VelocityX", animDirection.x, 0.1f, Time.deltaTime);
+        animator.SetFloat("VelocityZ", animDirection.z, 0.1f, Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0), 150 * Time.deltaTime);
 
     }
