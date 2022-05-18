@@ -122,7 +122,8 @@ public class Move : MonoBehaviour
         }
         animator.SetFloat("VelocityX", animDirection.x, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityZ", animDirection.z, 0.1f, Time.deltaTime);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0), 150 * Time.deltaTime);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0), 150 * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0);
 
     }
 

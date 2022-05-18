@@ -8,13 +8,14 @@ public class SpawnPlayers : MonoBehaviour
 
     public GameObject playerPrefab;
     [SerializeField] private Transform cameraLookAtTransform;
+    [SerializeField] private Vector3 cameraOffset;
     
     // Start is called before the first frame update
     void Start()
     {
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name,Vector3.zero, Quaternion.identity);
         cameraLookAtTransform.SetParent(player.transform);
-        cameraLookAtTransform.localPosition = new Vector3(0, 1, 0);
+        cameraLookAtTransform.localPosition = cameraOffset;
     }
 
     // Update is called once per frame
