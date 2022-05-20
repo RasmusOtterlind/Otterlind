@@ -394,7 +394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345313132734782173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.526001, y: 3.0299997, z: 0.582}
+  m_LocalPosition: {x: 0.526001, y: 3.0299997, z: 0.961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -627,7 +627,7 @@ MonoBehaviour:
   speed: 7
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   groundChecker: {fileID: 5853788099533479234}
 --- !u!114 &4926093440485872363
 MonoBehaviour:
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nUpgradesMax: 3
-  coinShield: {fileID: 6949127570202917554, guid: 50a4dc36bd909414685c5cdfe5e32048, type: 3}
+  coinShield: {fileID: 4198691784129817334, guid: f9ec1db40efda5f41bf5e741bb39a3fd, type: 3}
   coinShieldTransform: {fileID: 6269983003727107980}
 --- !u!114 &5998903739849240099
 MonoBehaviour:
@@ -3554,15 +3554,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22546832512337304, guid: a3e4b6757338a5040952fe6f64c75fce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103632244795494206, guid: a3e4b6757338a5040952fe6f64c75fce, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 103632244795494206, guid: a3e4b6757338a5040952fe6f64c75fce, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 462395742636113003, guid: a3e4b6757338a5040952fe6f64c75fce, type: 3}
       propertyPath: m_Pivot.x
